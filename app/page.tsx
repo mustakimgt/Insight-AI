@@ -23,6 +23,8 @@ import { RoadmapPhases } from "@/components/roadmap/roadmap-phases"
 import { ExpectedOutcomes } from "@/components/roadmap/expected-outcomes"
 
 import { ReviewsView } from "@/components/reviews/reviews-view"
+import { ChatView } from "@/components/chat/chat-view"
+import { ProductIntelligenceView } from "@/components/product-intelligence/product-intelligence-view"
 
 export default function Home() {
   const [activeView, setActiveView] = React.useState("overview")
@@ -96,6 +98,10 @@ export default function Home() {
         )
       case "reviews":
         return <ReviewsView />
+      case "chat":
+        return <ChatView />
+      case "product-intelligence":
+        return <ProductIntelligenceView />
       default:
         return (
           <div className="flex items-center justify-center h-[60vh]">
@@ -114,10 +120,10 @@ export default function Home() {
       <Sidebar activeView={activeView} onNavigate={setActiveView} />
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden w-full">
         <Header />
 
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-8 pt-16 lg:pt-8">
           <div className="max-w-7xl mx-auto">
             {renderContent()}
             
